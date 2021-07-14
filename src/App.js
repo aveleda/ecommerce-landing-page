@@ -38,6 +38,7 @@ function App(props) {
   function clearEmail () {
     localStorage.clear();
     setEmail("");
+    setMsg("");
   }
 
   return (
