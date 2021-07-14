@@ -3,7 +3,8 @@ import './App.css';
 
 function App(props) {
   const [ email, setEmail ] = useState('');
-  const [ msg, setMsg] = useState('');
+  const [ error, setError ] = useState(false);
+  const [ msg, setMsg]      = useState('');
 
   function isValidEmail(){
       const pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
@@ -16,32 +17,44 @@ function App(props) {
       emailList = JSON.parse(emailList);
       console.log(emailList);
       console.log(email);
+      if (emailList === null) {
+        emailList = []
+      }
       if (emailList.indexOf(email) === -1){
         emailList.push(email);
         localStorage.setItem('emailList', JSON.stringify(emailList));
         setMsg('Email cadastrado com sucesso.');
+        setError(false);
       } else {
         setMsg("Email já cadastrado");
-        console.log(emailList);
+        setError(true);
       }
     } else {
       setMsg("Email inválido.");
+      setError(true);
     }
   }
 
+  function clearEmail () {
+    localStorage.clear()
+  }
+
   return (
-    <div>
+    <div className="App-header">
       <h1>Mega Promoção Chegando</h1>
       <p>
         Fique por dentro das novidades.
       </p>
-      <input required="" type="email" className="emailInput" value={email} 
-        placeholder="Cadastre o seu email" onChange={e => setEmail(e.target.value)}></input>
-      <button type="button" onClick={handleEmail}>Cadastrar</button>
       <div>
-        { msg }
+        <input required="" type="email" className="emailInput" value={email} 
+          placeholder="Cadastre o seu email" onChange={e => setEmail(e.target.value)}></input>
+        <button type="button" onClick={handleEmail}>Cadastrar</button>
+        { error ?
+          <span className="errorSpan">{msg}</span>:
+          <span className="successSpan">{msg}</span>
+        }
+        <button type="button" onClick={clearEmail}>Limpar Cadastro</button>
       </div>
-      
     </div>
   );
 }
