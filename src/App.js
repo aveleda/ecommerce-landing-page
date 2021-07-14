@@ -42,7 +42,7 @@ function App(props) {
   }
 
   return (
-    <div className="App-header">
+    <div className="App">
       <h1>Mega Promoção Chegando</h1>
       <p>
         Fique por dentro das novidades.
