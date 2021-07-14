@@ -23,14 +23,14 @@ function App(props) {
       if (emailList.indexOf(email) === -1){
         emailList.push(email);
         localStorage.setItem('emailList', JSON.stringify(emailList));
-        setMsg('Email cadastrado com sucesso.');
+        setMsg('E-mail cadastrado com sucesso.');
         setError(false);
       } else {
-        setMsg("Email já cadastrado");
+        setMsg("Este e-mail já foi cadastrado.");
         setError(true);
       }
     } else {
-      setMsg("Email inválido.");
+      setMsg("E-mail inválido.");
       setError(true);
     }
   }
@@ -49,7 +49,7 @@ function App(props) {
       </p>
       <div>
         <input required="" type="email" className="emailInput" value={email} 
-          placeholder="Cadastre o seu email" onChange={e => setEmail(e.target.value)}></input>
+          placeholder="Cadastre o seu e-mail" onChange={e => setEmail(e.target.value)}></input>
         <button type="button" onClick={handleEmail}>Cadastrar</button>
         <button type="button" onClick={clearEmail}>Limpar</button>
         { error ?
