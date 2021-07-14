@@ -36,7 +36,7 @@ function App(props) {
   }
 
   function clearEmail () {
-    localStorage.clear();
+    //localStorage.clear();
     setEmail("");
     setMsg("");
   }
@@ -51,7 +51,7 @@ function App(props) {
         <input required="" type="email" className="emailInput" value={email} 
           placeholder="Cadastre o seu email" onChange={e => setEmail(e.target.value)}></input>
         <button type="button" onClick={handleEmail}>Cadastrar</button>
-        <button type="button" onClick={clearEmail}>Limpar Cadastro</button>
+        <button type="button" onClick={clearEmail}>Limpar</button>
         { error ?
           <span className="errorSpan">{msg}</span>:
           <span className="successSpan">{msg}</span>
