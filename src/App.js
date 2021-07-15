@@ -42,7 +42,7 @@ function App(props) {
   return (
     <>
       <header className="header">
-        <h1>Mega Promoção Chegando</h1>
+        <h1>MEGA Promoção</h1>
       </header>
       <section className="section">
         <div className="card">
