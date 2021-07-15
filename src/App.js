@@ -46,15 +46,15 @@ function App(props) {
       </header>
       <section className="section">
         <div className="card">
-          <img src="fone.png"></img>
+          <img src="fone.png" alt="Mega Promoção" />
           <span className="description">Desconto: 20%</span>
         </div>
         <div className="card">
-          <img src="nikon.png"></img>
+          <img src="nikon.png" alt="Mega Promoção" />
           <span className="description">Desconto: 15%</span>
         </div>
         <div className="card">
-          <img src="relogio-pulso.png"></img>
+          <img src="relogio-pulso.png" alt="Mega Promoção" />
           <span className="description">Desconto: 18%</span>
         </div>
       </section>
