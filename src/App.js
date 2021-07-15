@@ -15,8 +15,6 @@ function App(props) {
     if (isValidEmail()){
       let emailList = localStorage.getItem('emailList');
       emailList = JSON.parse(emailList);
-      console.log(emailList);
-      console.log(email);
       if (emailList === null) {
         emailList = []
       }
@@ -42,22 +40,40 @@ function App(props) {
   }
 
   return (
-    <div className="App">
-      <h1>Mega Promoção Chegando</h1>
-      <p>
-        Fique por dentro das novidades.
-      </p>
-      <div>
-        <input required="" type="email" className="emailInput" value={email} 
-          placeholder="Cadastre o seu e-mail" onChange={e => setEmail(e.target.value)}></input>
-        <button type="button" onClick={handleEmail}>Cadastrar</button>
-        <button type="button" onClick={clearEmail}>Limpar</button>
-        { error ?
-          <span className="errorSpan">{msg}</span>:
-          <span className="successSpan">{msg}</span>
-        }
-      </div>
-    </div>
+    <>
+      <header className="header">
+        <h1>Mega Promoção Chegando</h1>
+      </header>
+      <section className="section">
+        <div className="card">
+          <img src="fone.png"></img>
+          <span className="description">Desconto: 20%</span>
+        </div>
+        <div className="card">
+          <img src="nikon.png"></img>
+          <span className="description">Desconto: 15%</span>
+        </div>
+        <div className="card">
+          <img src="relogio-pulso.png"></img>
+          <span className="description">Desconto: 18%</span>
+        </div>
+      </section>
+      <footer className="footer">
+        <p>
+          Fique por dentro das novidades.
+        </p>
+        <div>
+          <input required="" type="email" className="emailInput" value={email} 
+            placeholder="Cadastre o seu e-mail" onChange={e => setEmail(e.target.value)}></input>
+          <button type="button" onClick={handleEmail}>Cadastrar</button>
+          <button type="button" onClick={clearEmail}>Limpar</button>
+          { error ?
+            <span className="errorSpan">{msg}</span>:
+            <span className="successSpan">{msg}</span>
+          }
+        </div>
+      </footer>
+    </>
   );
 }
 
